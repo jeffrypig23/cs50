@@ -1,0 +1,1 @@
+print("hello, world")  # Prints helllo, world
