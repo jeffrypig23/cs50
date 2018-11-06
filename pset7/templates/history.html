@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Action</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if history != [] %}
+            {% for entry in history %}
+                <tr>
+                    <th>{{ entry.symbol }}</th>
+                    <th>{{ entry.action }}</th>
+                    <th>{{ entry.amount }}</th>
+                    <th>{{ "{:,.2f}".format(entry.price) }}</th>
+                    <th>{{ entry.date }}</th>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <th> - </th>
+                <th> - </th>
+                <th> - </th>
+                <th> - </th>
+                <th> - </th>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

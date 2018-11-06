@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <th>{{ stock.symbol }}</th>
+                <th>{{ stock.name }}</th>
+                <th>{{ stock.amount }}</th>
+                <th>{{ "{:,.2f}".format(stock.price) }}</th>
+                <th>{{ "{:,.2f}".format(stock.total) }}</th>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th>$</th>
+            <th>CASH</th>
+            <th>--</th>
+            <th>--</th>
+            <th>{{CASH}}</th>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>{{TOTAL}}</th>
+        </tr>
+    </tfoot>
+</table>
+
+<br>
+<br>
+<center>
+    {% if meme == "makeitrain.jpg" %}
+        <img src="https://media.giphy.com/media/VTxmwaCEwSlZm/200.gif" >
+    {% else %}
+         <h2>{{meme}}</h2>
+    {% endif %}
+</center>
+
+{% endblock %}

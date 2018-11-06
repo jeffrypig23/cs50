@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {% if quote is defined %}
+        <p>A share of {{name}} ({{symbol}}) is currently selling for {{price}} a share.</p>
+    {% else %}
+        <form action="/quote" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Enter stock name" type="text"/>
+            </div>
+            <button class="btn btn-primary" type=submit>Lookup stock</button>
+        </form>
+    {% endif %}
+{% endblock %}
